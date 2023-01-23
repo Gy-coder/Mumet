@@ -1,12 +1,11 @@
-import { defineComponent, onMounted, ref } from "vue"
+import { defineComponent } from "vue"
 import s from './index.module.scss'
 
-export const Splash = defineComponent({
+export const BlockButton = defineComponent({
     setup(props, context) {
-
         return () => (
             <div class={s.wrapper}>
-                <span>momo</span>
+                <button class={s.button}>{context.slots.default?.()}</button>
             </div>
         );
     },

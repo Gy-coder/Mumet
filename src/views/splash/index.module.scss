@@ -1,0 +1,26 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    background: #589c97;
+
+    >span {
+        transform-origin: center;
+        animation: a 1s ease-in-out;
+    }
+}
+
+
+@keyframes a {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(2);
+    }
+}

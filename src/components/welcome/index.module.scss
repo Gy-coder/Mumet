@@ -1,0 +1,42 @@
+.wrapper {
+    height: calc(100vh - var(--welcome-footer-height));
+    display: flex;
+    flex-direction: column;
+
+    >.icon {
+        flex-grow: 1;
+        background-color: var(--welcome-icon-layout-bg);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >img {
+            width: var(--welcome-icon-length);
+            height: var(--welcome-icon-length);
+        }
+
+        .triangle {
+            width: 100%;
+            height: 10%;
+            position: absolute;
+            bottom: 0;
+            display: block;
+            background: white;
+            clip-path: polygon(0 0, 0% 100%, 100% 100%);
+        }
+    }
+
+    >.text {
+        height: 20%;
+        color: var(--welcome-text-color);
+        font-size: 36px;
+        font-weight: bold;
+        padding: 9% 9%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+    }
+}

@@ -1,0 +1,19 @@
+.wrapper {
+    padding: 0 24px;
+    display: block;
+    width: 100%;
+
+    >.button {
+        outline: none;
+        border: none;
+        background: var(--blockbutton-bg);
+        color: white;
+        border-radius: 999px;
+        padding: 7px 12px;
+        width: 100%;
+        height: var(--blockbutton-height);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

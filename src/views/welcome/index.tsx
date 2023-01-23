@@ -1,5 +1,6 @@
 import { defineComponent } from "vue"
 import { RouterView } from "vue-router";
+import { BlockButton } from "../../shared/BlockButton";
 import s from "./index.module.scss"
 
 export const Welcome = defineComponent({
@@ -10,7 +11,7 @@ export const Welcome = defineComponent({
                     <RouterView />
                 </main>
                 <footer>
-                    <button>Get Started</button>
+                    <BlockButton>Get Started</BlockButton>
                 </footer>
             </div>
         );
