@@ -5,10 +5,10 @@ import icon from '../../assets/icons/save-money.svg'
 
 export const Second = defineComponent({
     render() {
-        return <WelcomeLayout>
+        return <WelcomeLayout index={2}>
             {{
                 icon: () => <img src={icon} />,
-                text: () => <>fuck</>
+                text: () => <>Spend Smarter Save More</>
             }}
         </WelcomeLayout>
     }

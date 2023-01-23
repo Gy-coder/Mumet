@@ -4,7 +4,7 @@ import { WelcomeLayout } from "./WelcomeLayout";
 
 export const First = defineComponent({
     render() {
-        return <WelcomeLayout>
+        return <WelcomeLayout index={1}>
             {{
                 icon: () => <img src={icon} />,
                 text: () => <>Spend Smarter Save More</>
