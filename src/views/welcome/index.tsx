@@ -8,10 +8,14 @@ export const Welcome = defineComponent({
         return () => (
             <div class={s.wrapper}>
                 <main>
-                    <RouterView />
+                    <RouterView name="main">
+                        {(obj: any) => {
+                            return <obj.Component />
+                        }}
+                    </RouterView>
                 </main>
                 <footer>
-                    <BlockButton>Get Started</BlockButton>
+                    <RouterView name="footer" />
                 </footer>
             </div>
         );

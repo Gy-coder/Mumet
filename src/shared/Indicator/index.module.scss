@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+
+    span+span {
+        margin-left: 8px;
+    }
+
+    >span {
+        width: var(--indicator-length);
+        height: var(--indicator-length);
+        background: var(--indicator-bg);
+        border-radius: 50%;
+        transition: background 300ms ease-in-out;
+    }
+
+    >span.active {
+        background: var(--blockbutton-bg);
+    }
+}

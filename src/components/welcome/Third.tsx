@@ -1,14 +1,13 @@
 import { defineComponent } from "vue"
-import { WelcomeLayout } from "./WelcomeLayout";
 import icon from '../../assets/icons/save-money.svg'
+import { WelcomeLayout } from "./WelcomeLayout";
 
-
-export const Second = defineComponent({
+export const Third = defineComponent({
     render() {
         return <WelcomeLayout>
             {{
                 icon: () => <img src={icon} />,
-                text: () => <>fuck</>
+                text: () => <>Third</>
             }}
         </WelcomeLayout>
     }
