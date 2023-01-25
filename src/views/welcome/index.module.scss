@@ -1,7 +1,8 @@
 .wrapper {
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     display: flex;
     flex-direction: column;
+    border: 1px solid red;
 
     >main {
         height: calc(100vh - var(--welcome-footer-height));
@@ -21,6 +22,19 @@
         bottom: 0;
         left: 0;
     }
+
+    .skip {
+        position: fixed;
+        top: 5%;
+        right: 5%;
+        border: 1px solid #333;
+        border-radius: 999px;
+        height: 24px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 
@@ -31,13 +45,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    transition: all 300ms ease-out;
+    transition: all 500ms ease-out;
 }
 
 .slide_fade_enter_from {
     transform: translateX(100vw);
+    -ms-transform: translateX(100vw);
+    -webkit-transform: translateX(100vw);
+    -moz-transform: translateX(100vw);
+    -o-transform: translateX(100vw);
 }
 
 .slide_fade_leave_to {
     transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    -webkit-transform: translateX(-100vw);
+    -moz-transform: translateX(-100vw);
+    -o-transform: translateX(-100vw);
 }

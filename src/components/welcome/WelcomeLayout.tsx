@@ -1,4 +1,4 @@
-import { defineComponent, toRefs } from "vue"
+import { defineComponent, ref, toRefs } from "vue"
 import s from './index.module.scss'
 
 export const WelcomeLayout = defineComponent({
