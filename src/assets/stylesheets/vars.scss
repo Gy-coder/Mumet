@@ -1,5 +1,5 @@
 :root {
-    --welcome-footer-height: 102px;
+    --welcome-footer-height: 196px;
     --welcome-text-color: #4e938d;
     --welcome-icon-length: 224px;
     --welcome-icon-layout-bg: #eef8f7;
@@ -7,4 +7,5 @@
     --blockbutton-height: 48px;
     --indicator-bg: #999;
     --indicator-length: 12px;
+    --height: calc(var(--vh) * 100);
 }

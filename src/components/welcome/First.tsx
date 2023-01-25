@@ -4,10 +4,11 @@ import icon from '../../assets/icons/First.svg'
 
 export const First = defineComponent({
     render() {
-        return <WelcomeLayout index={1}>
+        return <WelcomeLayout>
             {{
                 icon: () => <img src={icon} />,
-                text: () => <>Spend Smarter Save More</>
+                title: () => <>Manage your money easily, without any hassle</>,
+                subtitle: () => <>Mumet will help you manage expenses and income easily without any hassle</>
             }}
         </WelcomeLayout>
     }

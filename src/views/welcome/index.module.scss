@@ -1,11 +1,10 @@
 .wrapper {
-    height: calc(var(--vh) * 100);
+    height: var(--height);
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
 
     >main {
-        height: calc(100vh - var(--welcome-footer-height));
+        height: calc(var(--height) - var(--welcome-footer-height));
         position: relative;
     }
 
