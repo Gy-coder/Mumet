@@ -9,6 +9,10 @@ export const Welcome = defineComponent({
     setup(props, context) {
         const router = useRouter(), route = useRoute()
         const wrapper = ref<HTMLElement | null>(null)
+        const handleClickSkip = () => {
+            console.log(1)
+            router.replace("/start")
+        }
         const { direction, swiping } = useSwipe(wrapper, {
             beforeStart: (e) => e.preventDefault()
         })
@@ -40,7 +44,7 @@ export const Welcome = defineComponent({
                 <footer>
                     <RouterView name="footer" />
                 </footer>
-                <span class={s.skip}>skip</span>
+                <span class={s.skip} onClick={handleClickSkip}>Skip This</span>
             </div >
         );
     },

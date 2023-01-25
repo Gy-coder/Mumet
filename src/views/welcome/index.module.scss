@@ -26,13 +26,18 @@
         position: fixed;
         top: 3%;
         right: 3%;
-        border: 1px solid #333;
-        border-radius: 999px;
-        height: 24px;
-        width: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        /*skip this*/
+        width: 72px;
+        height: 28px;
+        opacity: 1;
+        /** 文本1 */
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        line-height: 28px;
+        color: rgba(56, 89, 225, 1);
+        text-align: right;
+        vertical-align: top;
+
     }
 }
 
