@@ -7,7 +7,6 @@ import { useSetupHeight } from "../../hooks/useSetupHeight";
 
 const routerTo: Record<string, string> = {
     "/welcome/1": "/welcome/2",
-    "/welcome/2": "/welcome/3"
 }
 
 export const Welcome = defineComponent({
