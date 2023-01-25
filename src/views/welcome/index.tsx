@@ -2,25 +2,19 @@ import { defineComponent, ref, Transition, VNode, watchEffect } from "vue"
 import { RouteLocationNormalizedLoaded, RouterView, useRoute, useRouter } from "vue-router";
 import s from "./index.module.scss"
 import { useSwipe } from "../../hooks/useSwipe";
-import { throttle } from "../../shared/throttle";
 import { useSetupHeight } from "../../hooks/useSetupHeight";
-
-const routerTo: Record<string, string> = {
-    "/welcome/1": "/welcome/2",
-}
+import { replaceRouter } from "../../config/router/routerToInWelcome";
 
 export const Welcome = defineComponent({
     setup(props, context) {
         const router = useRouter(), route = useRoute()
         const wrapper = ref<HTMLElement | null>(null)
-        const replaceRouter = throttle(() => router.replace(routerTo[route.path]), 500)
         const { direction, swiping } = useSwipe(wrapper, {
             beforeStart: (e) => e.preventDefault()
         })
         watchEffect(() => {
-            console.log(swiping.value, direction.value)
             if (swiping.value && direction.value === 'left') {
-                replaceRouter()
+                replaceRouter(router, route)
             }
         })
         useSetupHeight()

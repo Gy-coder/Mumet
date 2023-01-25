@@ -13,7 +13,7 @@
         height: var(--welcome-footer-height);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         font-weight: bold;
         font-size: 18px;
@@ -24,8 +24,8 @@
 
     .skip {
         position: fixed;
-        top: 5%;
-        right: 5%;
+        top: 3%;
+        right: 3%;
         border: 1px solid #333;
         border-radius: 999px;
         height: 24px;

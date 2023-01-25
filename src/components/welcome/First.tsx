@@ -1,6 +1,6 @@
 import { defineComponent } from "vue"
 import { WelcomeLayout } from "./WelcomeLayout";
-import icon from '../../assets/icons/First.svg'
+import icon from '../../assets/icons/first.svg'
 
 export const First = defineComponent({
     render() {
