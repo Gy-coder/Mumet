@@ -1,16 +1,29 @@
 .wrapper {
-    height: 100vh;
+    height: var(--height);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
     font-weight: bold;
     color: white;
-    background: #589c97;
+    background: var(--splash-bg);
 
-    >span {
+    >img {
         transform-origin: center;
         animation: a 1s ease-in-out;
+    }
+
+    .text {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        color: rgba(173, 186, 243, 1);
     }
 }
 
