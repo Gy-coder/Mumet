@@ -7,7 +7,7 @@ import { Start } from "../../views/start/Start";
 import { Welcome } from "../../views/welcome";
 
 export const routes: RouteRecordRaw[] = [
-    { path: '/', redirect: '/welcome' },
+    { path: '/', redirect: '/splash' },
     { path: '/splash', component: Splash },
     {
         path: '/welcome',

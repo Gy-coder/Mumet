@@ -9,7 +9,7 @@
 
     >img {
         transform-origin: center;
-        animation: a 1s ease-in-out;
+        animation: animate 1s ease-in-out;
     }
 
     .text {
@@ -21,14 +21,14 @@
         bottom: 5%;
         left: 0;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 400;
         letter-spacing: 0.2px;
         color: rgba(173, 186, 243, 1);
     }
 }
 
 
-@keyframes a {
+@keyframes animate {
     0% {
         transform: scale(1);
     }
