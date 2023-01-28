@@ -1,4 +1,5 @@
 import { defineComponent } from "vue"
+import { RouterLink } from "vue-router";
 import { useSetupHeight } from "../../hooks/useSetupHeight";
 import { BlockButton } from "../../shared/BlockButton";
 import { Icon } from "../../shared/Icon";
@@ -16,14 +17,18 @@ export const Start = defineComponent({
                 <main>
                     <div class={s.title}>Let’s Get Started</div>
                     <div class={s.subtitle}>Managing your money feels like being mentored</div>
-                    <BlockButton>Get Started</BlockButton>
+                    <RouterLink to="/home">
+                        <BlockButton>
+                            Get Started
+                        </BlockButton>
+                    </RouterLink>
                 </main>
 
                 <footer>
                     <span>By signing up or logging in, i accept the mumet
                         Terms of Service and Privacy Policy</span>
                 </footer>
-            </div>
+            </div >
         );
     },
 });

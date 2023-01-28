@@ -1,0 +1,10 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--height) - 64px);
+
+    >.main {
+        flex-grow: 1;
+        background: #f5f5f5;
+    }
+}

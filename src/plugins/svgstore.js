@@ -34,7 +34,7 @@ export const svgstore = function (options = {}) {
               "removeEmptyAttrs",
               {
                 name: "removeAttrs",
-                params: { attrs: "(data-name|data-xxx)" },
+                params: { attrs: "(data-name|data-xxx|(fill|stroke))" },
               },
             ],
           }

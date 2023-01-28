@@ -10,7 +10,7 @@ export const Icon = defineComponent({
     },
     setup(props, context) {
         return () => (
-            <svg class={s.icon} preserveAspectRatio="none meet">
+            <svg class={s.icon}>
                 <use xlinkHref={`#${props.name}`}></use>
             </svg>
         );
