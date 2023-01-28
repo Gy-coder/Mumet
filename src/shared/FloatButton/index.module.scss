@@ -1,0 +1,19 @@
+.float_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 13%;
+    right: 8%;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--splash-bg);
+    box-shadow: 0px 16px 40px -8px rgba(21, 20, 31, 0.4);
+
+    >svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+}
