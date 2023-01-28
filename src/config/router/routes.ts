@@ -3,7 +3,7 @@ import { First } from "../../components/welcome/First";
 import { Second } from "../../components/welcome/Second";
 import { WelcomeFooter } from "../../components/welcome/WelcomeFooter";
 import { Splash } from "../../views/splash";
-import { Start } from "../../views/start/Start";
+import { Start } from "../../views/start";
 import { Welcome } from "../../views/welcome";
 
 export const routes: RouteRecordRaw[] = [

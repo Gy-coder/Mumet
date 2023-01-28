@@ -1,7 +1,7 @@
 import { defineComponent } from "vue"
-import icon from '../../assets/icons/start.svg'
 import { useSetupHeight } from "../../hooks/useSetupHeight";
 import { BlockButton } from "../../shared/BlockButton";
+import { Icon } from "../../shared/Icon";
 import s from './index.module.scss'
 
 export const Start = defineComponent({
@@ -10,7 +10,7 @@ export const Start = defineComponent({
         return () => (
             <div class={s.wrapper}>
                 <header class={s.icon}>
-                    <img src={icon} />
+                    <Icon name="start" />
                     <span class={s.opcity}></span>
                 </header>
                 <main>
