@@ -9,7 +9,8 @@ export const MainLayout = defineComponent({
         return () => (
             <div class={s.layout}>
                 <div class={s.main}>
-                    {context.slots.default?.()}
+                    <header>{context.slots.header?.()}</header>
+                    <main>{context.slots.main?.()}</main>
                 </div>
                 <Nav />
             </div>

@@ -1,10 +1,16 @@
 .layout {
+    height: calc(var(--height) - var(--nav-height));
     display: flex;
     flex-direction: column;
-    height: calc(var(--height) - 64px);
+    background: #f5f5f5;
 
     >.main {
         flex-grow: 1;
-        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+
+        >main {
+            flex-grow: 1;
+        }
     }
 }
