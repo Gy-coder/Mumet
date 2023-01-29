@@ -1,5 +1,4 @@
 import { defineComponent } from "vue"
-import { useSetupHeight } from "../../hooks/useSetupHeight";
 import { Avatar } from "../../shared/Avatar";
 import { FloatButton } from "../../shared/FloatButton";
 import { Header } from "../../shared/Header";
@@ -9,7 +8,6 @@ import s from './index.module.scss';
 
 export const Home = defineComponent({
     setup(props, context) {
-        useSetupHeight()
         return () => (
             <MainLayout>{{
                 header: () => <Header>{{
@@ -48,10 +46,51 @@ export const Home = defineComponent({
                             </div>
                         </div>
                     </div>
-                    <div class={s.transtions}>Transactions</div>
+                    <div class={s.transactions}>
+                        <div class={s.transactions_header}>
+                            <span class={s.transactions_header_hint}>Transactions</span>
+                            <span class={s.transactions_header_action}>See all</span>
+                        </div>
+                        <div class={s.transactions_content}>
+                            <div class={s.transactions_content_recent_header}>Recent Transactions</div>
+                            <div class={s.transactions_content_recent_content}>
+                                <div class={s.transactions_content_recent_item}>
+                                    <div class={s.transactions_content_recent_item_tag}>
+                                        🍔
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_info}>
+                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
+                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
+                                </div>
+                                <div class={s.transactions_content_recent_item}>
+                                    <div class={s.transactions_content_recent_item_tag}>
+                                        🍔
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_info}>
+                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
+                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
+                                </div>
+                                <div class={s.transactions_content_recent_item}>
+                                    <div class={s.transactions_content_recent_item_tag}>
+                                        🍔
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_info}>
+                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
+                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
+                                    </div>
+                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <FloatButton onClick={() => console.log(1)} />
                 </>)
-            }}</MainLayout>
+            }
+            }</MainLayout >
         );
     },
 });

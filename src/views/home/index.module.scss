@@ -7,7 +7,7 @@
     .subtitle {
         margin-top: 12px;
         font-size: 14px;
-        color: #77777d;
+        color: var(--subtitle-color);
     }
 
     .title {
@@ -78,6 +78,7 @@
 
         >&_income {
             border-right: 1px solid #E8EBEE;
+            padding: 0 16px;
 
             &_icon {
                 display: flex;
@@ -85,12 +86,12 @@
                 align-items: center;
                 width: 28px;
                 height: 28px;
-                background: #e6f8ed;
+                background: var(--income-bg);
                 border-radius: 4px;
                 transform: rotate(180deg);
 
                 >svg {
-                    fill: #2fc46c;
+                    fill: var(--income-color);
                 }
             }
 
@@ -101,7 +102,7 @@
 
                 >&_hint {
                     font-size: 12px;
-                    color: #77777d;
+                    color: var(--subtitle-color);
                 }
 
                 >&_price {
@@ -112,6 +113,7 @@
         }
 
         >&_outcome {
+            padding: 0 16px;
 
             &_icon {
                 display: flex;
@@ -119,11 +121,11 @@
                 align-items: center;
                 width: 28px;
                 height: 28px;
-                background: #fbe4e5;
+                background: var(--outcome-bg);
                 border-radius: 4px;
 
                 >svg {
-                    fill: #d9232e;
+                    fill: var(--outcome-color);
                 }
             }
 
@@ -134,12 +136,94 @@
 
                 >&_hint {
                     font-size: 12px;
-                    color: #77777d;
+                    color: var(--subtitle-color);
                 }
 
                 >&_price {
                     margin-top: 8px;
                     font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.transactions {
+    flex-grow: 1;
+    min-width: 100%;
+    margin-top: 24px;
+
+    >&_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 8px 16px;
+        padding-bottom: 16px;
+
+        >&_hint {
+            font-size: 16px;
+            color: #15141f;
+        }
+
+        >&_action {
+            color: var(--splash-bg);
+            font-size: 14px;
+        }
+    }
+
+    &_content {
+        flex-grow: 1;
+        margin: 0 16px;
+        padding: 8px 16px;
+        background: white;
+        border-radius: 8px;
+
+        >&_recent_header {
+            padding: 16px 10px;
+            font-size: 12px;
+            color: var(--subtitle-color);
+        }
+
+        >&_recent {
+            >&_item {
+                padding: 16px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                >&_tag {
+                    width: 40px;
+                    height: 40px;
+                    background: #f7f8f9;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 4px;
+                    font-size: 24px;
+                }
+
+                >&_info {
+                    flex-grow: 1;
+                    padding: 4px 22px;
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 46px;
+
+                    >span+span {
+                        margin-top: 12px;
+                    }
+
+                    >&_name {
+                        font-size: 16px;
+                        color: #15141f;
+                        text-overflow: ellipsis;
+                    }
+
+                    >&_note {
+                        font-size: 12px;
+                        color: var(--subtitle-color);
+                        text-overflow: ellipsis;
+                    }
                 }
             }
         }
