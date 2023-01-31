@@ -10,7 +10,6 @@ export const Welcome = defineComponent({
         const router = useRouter(), route = useRoute()
         const wrapper = ref<HTMLElement | null>(null)
         const handleClickSkip = () => {
-            console.log(1)
             router.replace("/start")
         }
         const { direction, swiping } = useSwipe(wrapper, {

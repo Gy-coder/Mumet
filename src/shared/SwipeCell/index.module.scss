@@ -1,0 +1,27 @@
+.swipe_cell {
+    overflow: hidden;
+    position: relative;
+
+    &_wrapper {
+        display: flex;
+        overflow: visible;
+        transform: translateX(0px);
+        transition: transform 250ms ease-in-out;
+    }
+
+    &_actions {
+        transform: translateX(100%);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &_content {
+        width: 100%;
+    }
+}

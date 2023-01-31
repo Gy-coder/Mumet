@@ -4,6 +4,7 @@ import { FloatButton } from "../../shared/FloatButton";
 import { Header } from "../../shared/Header";
 import { Icon } from "../../shared/Icon";
 import { MainLayout } from "../../shared/MainLayout";
+import { SwipeCell } from "../../shared/SwipeCell";
 import s from './index.module.scss';
 
 export const Home = defineComponent({
@@ -54,16 +55,21 @@ export const Home = defineComponent({
                         <div class={s.transactions_content}>
                             <div class={s.transactions_content_recent_header}>Recent Transactions</div>
                             <div class={s.transactions_content_recent_content}>
-                                <div class={s.transactions_content_recent_item}>
-                                    <div class={s.transactions_content_recent_item_tag}>
-                                        🍔
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_info}>
-                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
-                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
-                                </div>
+                                <SwipeCell>
+                                    {{
+                                        left: () => <div>123123123</div>,
+                                        default: () => <div class={s.transactions_content_recent_item}>
+                                            <div class={s.transactions_content_recent_item_tag}>
+                                                🍔
+                                            </div>
+                                            <div class={s.transactions_content_recent_item_info}>
+                                                <span class={s.transactions_content_recent_item_info_name}>Burger</span>
+                                                <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
+                                            </div>
+                                            <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
+                                        </div>
+                                    }}
+                                </SwipeCell>
                                 <div class={s.transactions_content_recent_item}>
                                     <div class={s.transactions_content_recent_item_tag}>
                                         🍔
