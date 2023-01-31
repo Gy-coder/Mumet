@@ -1,4 +1,5 @@
 import { defineComponent } from "vue"
+import { TransactionItem } from "../../components/home/TransactionItem";
 import { Avatar } from "../../shared/Avatar";
 import { FloatButton } from "../../shared/FloatButton";
 import { Header } from "../../shared/Header";
@@ -58,38 +59,36 @@ export const Home = defineComponent({
                                 <SwipeCell>
                                     {{
                                         left: () => <div>123123123</div>,
-                                        default: () => <div class={s.transactions_content_recent_item}>
-                                            <div class={s.transactions_content_recent_item_tag}>
-                                                🍔
-                                            </div>
-                                            <div class={s.transactions_content_recent_item_info}>
-                                                <span class={s.transactions_content_recent_item_info_name}>Burger</span>
-                                                <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
-                                            </div>
-                                            <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
-                                        </div>
+                                        default: () => <TransactionItem
+                                            tag="🍔"
+                                            name="Burger"
+                                            info="Eat & Drink"
+                                            price="20000"
+                                        />
                                     }}
                                 </SwipeCell>
-                                <div class={s.transactions_content_recent_item}>
-                                    <div class={s.transactions_content_recent_item_tag}>
-                                        🍔
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_info}>
-                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
-                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
-                                </div>
-                                <div class={s.transactions_content_recent_item}>
-                                    <div class={s.transactions_content_recent_item_tag}>
-                                        🍔
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_info}>
-                                        <span class={s.transactions_content_recent_item_info_name}>Burger</span>
-                                        <span class={s.transactions_content_recent_item_info_note}>Eat & Drink</span>
-                                    </div>
-                                    <div class={s.transactions_content_recent_item_price}>$&nbsp;20000</div>
-                                </div>
+                                <SwipeCell>
+                                    {{
+                                        left: () => <div>123123123</div>,
+                                        default: () => <TransactionItem
+                                            tag="🍔"
+                                            name="Burger"
+                                            info="Eat & Drink"
+                                            price="20000"
+                                        />
+                                    }}
+                                </SwipeCell>
+                                <SwipeCell>
+                                    {{
+                                        left: () => <div>123123123</div>,
+                                        default: () => <TransactionItem
+                                            tag="🍔"
+                                            name="Burger"
+                                            info="Eat & Drink"
+                                            price="20000"
+                                        />
+                                    }}
+                                </SwipeCell>
                             </div>
                         </div>
                     </div>

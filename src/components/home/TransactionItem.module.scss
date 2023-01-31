@@ -1,0 +1,41 @@
+.transaction_item {
+    padding: 16px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >&_tag {
+        width: 40px;
+        height: 40px;
+        background: #f7f8f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        font-size: 24px;
+    }
+
+    >&_info {
+        flex-grow: 1;
+        padding: 4px 22px;
+        display: flex;
+        flex-direction: column;
+        min-width: 46px;
+
+        >span+span {
+            margin-top: 12px;
+        }
+
+        >&_name {
+            font-size: 16px;
+            color: #15141f;
+            text-overflow: ellipsis;
+        }
+
+        >&_note {
+            font-size: 12px;
+            color: var(--subtitle-color);
+            text-overflow: ellipsis;
+        }
+    }
+}
