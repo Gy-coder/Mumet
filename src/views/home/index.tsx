@@ -1,6 +1,7 @@
 import { defineComponent } from "vue"
 import { TransactionItem } from "../../components/home/TransactionItem";
 import { Avatar } from "../../shared/Avatar";
+import { Button } from "../../shared/Button";
 import { FloatButton } from "../../shared/FloatButton";
 import { Header } from "../../shared/Header";
 import { Icon } from "../../shared/Icon";
@@ -58,7 +59,7 @@ export const Home = defineComponent({
                             <div class={s.transactions_content_recent_content}>
                                 <SwipeCell>
                                     {{
-                                        left: () => <div>123123123</div>,
+                                        left: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"
@@ -69,7 +70,7 @@ export const Home = defineComponent({
                                 </SwipeCell>
                                 <SwipeCell>
                                     {{
-                                        left: () => <div>123123123</div>,
+                                        left: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"
@@ -80,7 +81,7 @@ export const Home = defineComponent({
                                 </SwipeCell>
                                 <SwipeCell>
                                     {{
-                                        left: () => <div>123123123</div>,
+                                        left: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"
