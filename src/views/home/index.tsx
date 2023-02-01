@@ -59,7 +59,7 @@ export const Home = defineComponent({
                             <div class={s.transactions_content_recent_content}>
                                 <SwipeCell>
                                     {{
-                                        left: () => <Button color="danger" square>Delete</Button>,
+                                        actions: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"
@@ -70,7 +70,7 @@ export const Home = defineComponent({
                                 </SwipeCell>
                                 <SwipeCell>
                                     {{
-                                        left: () => <Button color="danger" square>Delete</Button>,
+                                        actions: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"
@@ -81,7 +81,7 @@ export const Home = defineComponent({
                                 </SwipeCell>
                                 <SwipeCell>
                                     {{
-                                        left: () => <Button color="danger" square>Delete</Button>,
+                                        actions: () => <Button color="danger" square>Delete</Button>,
                                         default: () => <TransactionItem
                                             tag="🍔"
                                             name="Burger"

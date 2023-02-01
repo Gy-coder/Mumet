@@ -32,10 +32,9 @@ export const SwipeCell = defineComponent({
                         {context.slots.default?.()}
                     </div>
                     <div class={s.swipe_cell_actions} ref={actionWrapper}>
-                        {context.slots.left?.()}
+                        {context.slots.actions?.()}
                     </div>
                 </div>
-
             </div>
         );
     },
