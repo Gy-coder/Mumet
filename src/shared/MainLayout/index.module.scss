@@ -9,6 +9,7 @@
         flex-direction: column;
         height: cacl(var(--height) - var(--nav-height));
         overflow: scroll;
+        flex-grow: 1;
 
         >main {
             flex-grow: 1;

@@ -3,6 +3,7 @@ import { First } from "../../components/welcome/First";
 import { Second } from "../../components/welcome/Second";
 import { WelcomeFooter } from "../../components/welcome/WelcomeFooter";
 import { Home } from "../../views/home";
+import { ItemCreate } from "../../views/item_create";
 import { Splash } from "../../views/splash";
 import { Start } from "../../views/start";
 import { Welcome } from "../../views/welcome";
@@ -30,5 +31,6 @@ export const routes: RouteRecordRaw[] = [
         ]
     },
     { path: '/start', component: Start },
-    { path: '/home', component: Home }
+    { path: '/home', component: Home },
+    { path: '/item_create', component: ItemCreate }
 ]

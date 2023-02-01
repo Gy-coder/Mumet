@@ -1,0 +1,28 @@
+.item_create {
+
+    background: var(--splash-bg);
+    display: flex;
+    flex-direction: column;
+    height: var(--height);
+
+
+    >&_header {
+        background: var(--splash-bg);
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .text {
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+        }
+    }
+
+    >&_content {
+        flex-grow: 1;
+    }
+}

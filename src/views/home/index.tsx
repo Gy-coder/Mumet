@@ -1,4 +1,5 @@
 import { defineComponent } from "vue"
+import { RouterLink } from "vue-router";
 import { TransactionItem } from "../../components/home/TransactionItem";
 import { Avatar } from "../../shared/Avatar";
 import { Button } from "../../shared/Button";
@@ -93,7 +94,9 @@ export const Home = defineComponent({
                             </div>
                         </div>
                     </div>
-                    <FloatButton onClick={() => console.log(1)} />
+                    <RouterLink to="/item_create">
+                        <FloatButton />
+                    </RouterLink>
                 </>)
             }
             }</MainLayout >
