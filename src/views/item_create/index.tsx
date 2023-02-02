@@ -1,5 +1,6 @@
 import { defineComponent, ref } from "vue"
 import { useSetupHeight } from "../../hooks/useSetupHeight";
+import { Button } from "../../shared/Button";
 import { Header } from "../../shared/Header";
 import { Icon } from "../../shared/Icon";
 import { InputNumber } from "../../shared/InputNumber";
@@ -20,6 +21,7 @@ export const ItemCreate = defineComponent({
                 </Header>
                 <div class={s.item_create_content}>
                     <InputNumber v-model:amount={amountRef.value} />
+                    <Button style={{ background: 'white', width: "100%" }}>Add Transaction</Button>
                 </div>
             </div>
         )

@@ -42,3 +42,45 @@
     }
 
 }
+
+
+.input_wrapper {
+    background: #4d6de1;
+    padding: 18px 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    >.input_icon {
+        fill: white;
+        display: flex;
+        align-items: center;
+
+        >span {
+            color: #aebbf1;
+            margin-left: 12px;
+            font-size: 14px;
+        }
+
+        >svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    >.input_value {
+        position: absolute;
+        right: 16px;
+        color: white;
+        font-size: 14px;
+    }
+
+    >input {
+        border: none;
+        outline: none;
+        opacity: 0;
+    }
+}

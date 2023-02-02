@@ -1,5 +1,6 @@
 import { defineComponent, onMounted, ref } from "vue"
 import { Icon } from "../Icon";
+import { ItemCreateWrapper } from "../../components/items/item_create_wrapper";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
 
@@ -12,7 +13,10 @@ export const InputNumber = defineComponent({
     setup(props, context) {
         const visible = ref(true)
         const openPopup = () => visible.value = true
-        const closePopup = () => visible.value = false
+        const closePopup = () => {
+            if (amountRef.value[amountRef.value.length - 1] === '.') amountRef.value = amountRef.value.substring(0, amountRef.value.length - 1)
+            visible.value = false
+        }
         const amountRef = ref(props.amount!.toString() || "0")
         const appendNumber = (n: number | '.') => {
             const nString = n.toString()
@@ -38,13 +42,20 @@ export const InputNumber = defineComponent({
             context.emit("update:amount", parseFloat(amountRef.value).toFixed(2))
         }
         const deleteNumber = () => {
-            amountRef.value = amountRef.value.substring(0, amountRef.value.length - 1)
-            if (amountRef.value.length === 0) amountRef.value = '0'
-            context.emit("update:amount", parseFloat(amountRef.value).toFixed(2))
+            amountRef.value = '0'
+            context.emit("update:amount", parseFloat(amountRef.value))
         }
         return () => (
-            <div class={s.input_number}>
-                <input readonly type="text" onClick={openPopup} value={amountRef.value} />
+            <>
+                <ItemCreateWrapper value={amountRef.value} onClick={openPopup}>
+                    {{
+                        icons: () => <>
+                            <Icon name="coin" />
+                            <span>Price</span>
+                        </>,
+                        value: () => <>{amountRef.value}</>
+                    }}
+                </ItemCreateWrapper>
                 <Popup v-model:visible={visible.value} class={s.input_popup} showMask={false}>
                     <div class={s.input_popup_header}>
                         <span onClick={closePopup}>
@@ -66,7 +77,7 @@ export const InputNumber = defineComponent({
                         <div onClick={() => deleteNumber()}><span>Del</span></div>
                     </div>
                 </Popup>
-            </div>
+            </>
         );
     },
 });
