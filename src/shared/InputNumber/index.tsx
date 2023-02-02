@@ -1,4 +1,5 @@
 import { defineComponent, onMounted, ref } from "vue"
+import { Icon } from "../Icon";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
 
@@ -46,7 +47,9 @@ export const InputNumber = defineComponent({
                 <input readonly type="text" onClick={openPopup} value={amountRef.value} />
                 <Popup v-model:visible={visible.value} class={s.input_popup} showMask={false}>
                     <div class={s.input_popup_header}>
-                        <span onClick={closePopup}>arrow</span>
+                        <span onClick={closePopup}>
+                            <Icon name="arrow-down" />
+                        </span>
                     </div>
                     <div class={s.input_popup_main}>
                         <div onClick={() => appendNumber(1)}><span>1</span></div>
@@ -62,7 +65,6 @@ export const InputNumber = defineComponent({
                         <div onClick={() => appendNumber(0)}><span>0</span></div>
                         <div onClick={() => deleteNumber()}><span>Del</span></div>
                     </div>
-
                 </Popup>
             </div>
         );

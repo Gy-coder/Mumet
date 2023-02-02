@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, Teleport } from "vue"
+import { computed, defineComponent, PropType, Teleport, Transition } from "vue"
 import { Mask } from "../Mask";
 import s from './index.module.scss'
 
@@ -24,12 +24,16 @@ export const Popup = defineComponent({
         })
         return () => (
             <Teleport to="body">
-                {props.visible ?
-                    <>
-                        {props.showMask ? <Mask /> : null}
-                        <div class={[s.popup, ...classes.value]}>{context.slots.default?.()}</div>
-                    </>
-                    : null}
+                {props.showMask && props.visible ? <Mask /> : null}
+                <Transition
+                    name="popup"
+                    enterFromClass={s.popup_enter_from_class}
+                    enterToClass={s.popup_enter_to_class}
+                    leaveFromClass={s.popup_leave_from_class}
+                    leaveToClass={s.popup_leave_to_class}
+                >
+                    {props.visible ? <div class={[s.popup, ...classes.value]}>{context.slots.default?.()}</div> : null}
+                </Transition>
             </Teleport>
         );
     },

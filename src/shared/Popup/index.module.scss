@@ -6,4 +6,19 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    transition: transform 250ms ease-in-out;
+}
+
+
+
+
+.popup_enter_to_class,
+.popup_leave_from_class {
+    transform: translateY(0);
+}
+
+
+.popup_enter_from_class,
+.popup_leave_to_class {
+    transform: translateY(100%);
 }
