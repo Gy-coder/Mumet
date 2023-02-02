@@ -3,6 +3,7 @@ import { Icon } from "../Icon";
 import { ItemCreateWrapper } from "../../components/items/item_create_wrapper";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
+import { useVisible } from "../../hooks/useVisible";
 
 export const InputNumber = defineComponent({
     props: {
@@ -11,11 +12,11 @@ export const InputNumber = defineComponent({
         }
     },
     setup(props, context) {
-        const visible = ref(true)
-        const openPopup = () => visible.value = true
+        const { visible, open, close } = useVisible()
+        const openPopup = () => open()
         const closePopup = () => {
             if (amountRef.value[amountRef.value.length - 1] === '.') amountRef.value = amountRef.value.substring(0, amountRef.value.length - 1)
-            visible.value = false
+            close()
         }
         const amountRef = ref(props.amount!.toString() || "0")
         const appendNumber = (n: number | '.') => {
