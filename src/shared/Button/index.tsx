@@ -11,7 +11,6 @@ export const Button = defineComponent({
         }
     },
     setup(props, context) {
-        console.log(props.color)
         return () => (
             <button class={[s.button, {
                 [s.button_square]: props.square,
