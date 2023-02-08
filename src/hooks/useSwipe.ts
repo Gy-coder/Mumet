@@ -57,9 +57,9 @@ export function useSwipe(el: Ref<HTMLElement | null>, options?: Options) {
     }
     onMounted(() => {
         if (!el.value) return
-        el.value.addEventListener('touchstart', onStart)
-        el.value.addEventListener('touchmove', onMove)
-        el.value.addEventListener('touchend', onEnd)
+        el.value.addEventListener('touchstart', onStart, false)
+        el.value.addEventListener('touchmove', onMove, false)
+        el.value.addEventListener('touchend', onEnd, false)
     })
     onBeforeUnmount(() => {
         if (!el.value) return

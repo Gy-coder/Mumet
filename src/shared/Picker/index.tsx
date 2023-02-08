@@ -69,8 +69,6 @@ export const Picker = defineComponent({
                             <li>2010</li>
                         </ol>
                     </div>
-
-
                 </div>
             </Popup>
         );

@@ -2,16 +2,17 @@ import { defineComponent } from "vue"
 import { RouterLink } from "vue-router";
 import { useSetupHeight } from "../../hooks/useSetupHeight";
 import { BlockButton } from "../../shared/BlockButton";
-import { Icon } from "../../shared/Icon";
 import s from './index.module.scss'
+import url from '../../assets/icons/start.svg'
 
 export const Start = defineComponent({
     setup(props, context) {
         useSetupHeight()
+        console.log(url)
         return () => (
             <div class={s.wrapper}>
                 <header class={s.icon}>
-                    <Icon name="start" />
+                    <img src={url} />
                     <span class={s.opcity}></span>
                 </header>
                 <main>

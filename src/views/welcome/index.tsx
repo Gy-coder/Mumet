@@ -12,7 +12,11 @@ export const Welcome = defineComponent({
         const handleClickSkip = () => {
             router.replace("/start")
         }
-        const { direction, swiping } = useSwipe(wrapper)
+        const { direction, swiping } = useSwipe(wrapper, {
+            beforeMove(e) {
+                e.preventDefault()
+            },
+        })
         watchEffect(() => {
             if (swiping.value && direction.value === 'left') {
                 replaceRouter(router, route)
