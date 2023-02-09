@@ -4,7 +4,7 @@ import { Button } from "../../shared/Button";
 import { Header } from "../../shared/Header";
 import { Icon } from "../../shared/Icon";
 import { InputNumber } from "../../shared/InputNumber";
-import { Picker } from "../../shared/Picker";
+import { Column, Picker } from "../../shared/Picker";
 import s from './index.module.scss'
 
 export const ItemCreate = defineComponent({
@@ -22,7 +22,11 @@ export const ItemCreate = defineComponent({
                 </Header>
                 <div class={s.item_create_content}>
                     <InputNumber v-model:amount={amountRef.value} />
-                    <Picker dataSource={new Array(20).fill(0).map((_, i) => i)} />
+                    <Picker>
+                        <Column dataSource={new Array(20).fill(0).map((_, i) => i)} />
+                        <Column dataSource={new Array(10).fill(0).map((_, i) => i)} />
+                        <Column dataSource={new Array(5).fill(0).map((_, i) => i)} />
+                    </Picker>
                     <Button style={{ background: 'white', width: "100%" }}>Add Transaction</Button>
                 </div>
             </div>

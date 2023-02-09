@@ -3,7 +3,9 @@ import { useVisible } from "../../hooks/useVisible";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
 
-export const Picker = defineComponent({
+
+
+export const Column = defineComponent({
     props: {
         dataSource: {
             type: Array as PropType<(string | number)[]>,
@@ -43,23 +45,35 @@ export const Picker = defineComponent({
 
         }
         return () => (
+            <ol
+                class={s.picker_list}
+                style={{ transform: `translateY(${translateY.value}px)` }}
+                onTouchstart={handleTouchStart}
+                onTouchmove={handleTouchMove}
+                onTouchend={handleTouchEnd}>
+                {props.dataSource.map(dataItem => {
+                    return <li key={dataItem}>{dataItem}</li>
+                })}
+            </ol>
+        );
+    },
+});
+
+export const Picker = defineComponent({
+    setup(props, context) {
+        const { visible, open, close } = useVisible()
+        return () => (
             <Popup visible={true}>
                 <div
                     class={s.picker_wrapper}
-                    onTouchstart={handleTouchStart}
-                    onTouchmove={handleTouchMove}
-                    onTouchend={handleTouchEnd}
                 >
                     {/* <div class={s.picker_divider} /> */}
                     <div class={s.picker_divider}>
-                        <ol class={s.picker_list} style={{ transform: `translateY(${translateY.value}px)` }}>
-                            {props.dataSource.map(dataItem => {
-                                return <li key={dataItem}>{dataItem}</li>
-                            })}
-                        </ol>
+                        {context.slots.default?.()}
                     </div>
                 </div>
             </Popup>
         );
     },
-}); 
+});
+
