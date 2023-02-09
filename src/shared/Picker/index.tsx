@@ -21,7 +21,22 @@ export const Picker = defineComponent({
             lastY.value = y
         }
         const handleTouchEnd = () => {
+            const reminder = translateY.value % 36;
+            if (reminder > 0) {
+                if (reminder > 18) {
+                    translateY.value -= reminder
+                } else {
+                    translateY.value += (36 - reminder)
+                }
+            } else {
+                if (reminder < -18) {
+                    translateY.value -= (36 + reminder)
+                } else {
+                    translateY.value -= reminder
+                }
+            }
             isTouching.value = false
+
         }
         return () => (
             <Popup visible={true}>

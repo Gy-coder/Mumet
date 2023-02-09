@@ -8,11 +8,7 @@ export const SwipeCell = defineComponent({
         const actionWrapper = ref<HTMLDivElement | null>(null)
         const actionWidth = computed(() => Math.ceil(actionWrapper.value?.getBoundingClientRect().width || 0))
         const showAction = ref<boolean>(false)
-        const { swiping, direction, distance } = useSwipe(wrapperRef, {
-            beforeStart(e) {
-                e.preventDefault()
-            },
-        })
+        const { swiping, direction, distance } = useSwipe(wrapperRef)
         watchEffect(() => {
             if (swiping.value && direction.value === 'left' && distance.value!.x <= -actionWidth.value / 3) {
                 showAction.value = true
