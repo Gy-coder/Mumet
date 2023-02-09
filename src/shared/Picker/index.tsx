@@ -1,9 +1,15 @@
-import { defineComponent, ref } from "vue"
+import { defineComponent, PropType, ref } from "vue"
 import { useVisible } from "../../hooks/useVisible";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
 
 export const Picker = defineComponent({
+    props: {
+        dataSource: {
+            type: Array as PropType<(string | number)[]>,
+            default: () => []
+        }
+    },
     setup(props, context) {
         const { visible, open, close } = useVisible()
         const isTouching = ref(false)
@@ -20,20 +26,18 @@ export const Picker = defineComponent({
             translateY.value += dy
             lastY.value = y
         }
+        const setTranslateY = (y: number) => {
+            console.log(y, y > 0, y < props.dataSource.length * -36)
+            if (y > 0) y = 0
+            if (y < (props.dataSource.length - 1) * -36) y = (props.dataSource.length - 1) * -36
+            translateY.value = y
+        }
         const handleTouchEnd = () => {
             const reminder = translateY.value % 36;
-            if (reminder > 0) {
-                if (reminder > 18) {
-                    translateY.value -= reminder
-                } else {
-                    translateY.value += (36 - reminder)
-                }
+            if (Math.abs(reminder) < 18) {
+                setTranslateY(translateY.value - reminder)
             } else {
-                if (reminder < -18) {
-                    translateY.value -= (36 + reminder)
-                } else {
-                    translateY.value -= reminder
-                }
+                setTranslateY(translateY.value - reminder + 36 * (reminder > 0 ? 1 : -1))
             }
             isTouching.value = false
 
@@ -49,39 +53,9 @@ export const Picker = defineComponent({
                     {/* <div class={s.picker_divider} /> */}
                     <div class={s.picker_divider}>
                         <ol class={s.picker_list} style={{ transform: `translateY(${translateY.value}px)` }}>
-                            <li>2000</li>
-                            <li>2001</li>
-                            <li>2002</li>
-                            <li>2003</li>
-                            <li>2004</li>
-                            <li>2005</li>
-                            <li>2006</li>
-                            <li>2007</li>
-                            <li>2008</li>
-                            <li>2009</li>
-                            <li>2010</li>
-                            <li>2000</li>
-                            <li>2001</li>
-                            <li>2002</li>
-                            <li>2003</li>
-                            <li>2004</li>
-                            <li>2005</li>
-                            <li>2006</li>
-                            <li>2007</li>
-                            <li>2008</li>
-                            <li>2009</li>
-                            <li>2010</li>
-                            <li>2000</li>
-                            <li>2001</li>
-                            <li>2002</li>
-                            <li>2003</li>
-                            <li>2004</li>
-                            <li>2005</li>
-                            <li>2006</li>
-                            <li>2007</li>
-                            <li>2008</li>
-                            <li>2009</li>
-                            <li>2010</li>
+                            {props.dataSource.map(dataItem => {
+                                return <li key={dataItem}>{dataItem}</li>
+                            })}
                         </ol>
                     </div>
                 </div>

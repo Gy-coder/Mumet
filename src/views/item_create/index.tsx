@@ -22,7 +22,7 @@ export const ItemCreate = defineComponent({
                 </Header>
                 <div class={s.item_create_content}>
                     <InputNumber v-model:amount={amountRef.value} />
-                    <Picker />
+                    <Picker dataSource={new Array(20).fill(0).map((_, i) => i)} />
                     <Button style={{ background: 'white', width: "100%" }}>Add Transaction</Button>
                 </div>
             </div>
