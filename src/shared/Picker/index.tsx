@@ -5,15 +5,18 @@ import s from './index.module.scss'
 
 
 
-export const Column = defineComponent({
+const Column = defineComponent({
     props: {
         dataSource: {
             type: Array as PropType<(string | number)[]>,
             default: () => []
+        },
+        value: {
+            type: Object as PropType<string | number>
         }
     },
+    emits: ["update:value"],
     setup(props, context) {
-        const { visible, open, close } = useVisible()
         const isTouching = ref(false)
         const lastY = ref(-1)
         const translateY = ref(0)
@@ -29,7 +32,6 @@ export const Column = defineComponent({
             lastY.value = y
         }
         const setTranslateY = (y: number) => {
-            console.log(y, y > 0, y < props.dataSource.length * -36)
             if (y > 0) y = 0
             if (y < (props.dataSource.length - 1) * -36) y = (props.dataSource.length - 1) * -36
             translateY.value = y
@@ -42,7 +44,7 @@ export const Column = defineComponent({
                 setTranslateY(translateY.value - reminder + 36 * (reminder > 0 ? 1 : -1))
             }
             isTouching.value = false
-
+            context.emit("update:value", props.dataSource[Math.abs(translateY.value / -36)])
         }
         return () => (
             <ol
@@ -60,8 +62,19 @@ export const Column = defineComponent({
 });
 
 export const Picker = defineComponent({
+    props: {
+        dataSource: {
+            type: Array as PropType<Array<Array<string | number>>>,
+            default: () => []
+        },
+        value: {
+            type: Array as PropType<Array<string | number>>,
+            default: () => []
+        }
+    },
     setup(props, context) {
         const { visible, open, close } = useVisible()
+        const values = [ref(), ref(), ref()]
         return () => (
             <Popup visible={true}>
                 <div
@@ -69,7 +82,12 @@ export const Picker = defineComponent({
                 >
                     {/* <div class={s.picker_divider} /> */}
                     <div class={s.picker_divider}>
-                        {context.slots.default?.()}
+                        {props.dataSource.map((column, index) =>
+                            <>
+                                value: {values[index].value}
+                                <Column dataSource={column} v-model:value={values[index].value} />
+                            </>
+                        )}
                     </div>
                 </div>
             </Popup>
