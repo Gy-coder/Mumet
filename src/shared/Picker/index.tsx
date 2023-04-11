@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref } from "vue"
+import { computed, defineComponent, PropType, ref, watch, watchEffect } from "vue"
 import { useVisible } from "../../hooks/useVisible";
 import { Popup } from "../Popup";
 import s from './index.module.scss'
@@ -12,7 +12,10 @@ const Column = defineComponent({
             default: () => []
         },
         value: {
-            type: Object as PropType<string | number>
+            type: [Number, String]
+        },
+        index: {
+            type: Number
         }
     },
     emits: ["update:value"],
@@ -26,6 +29,7 @@ const Column = defineComponent({
         }
         const handleTouchMove = (e: TouchEvent) => {
             if (!isTouching.value) return
+            console.log("index:", props.index, 'isTouching', isTouching.value)
             const y = e.touches[0].clientY
             const dy = y - lastY.value
             translateY.value += dy
@@ -46,6 +50,10 @@ const Column = defineComponent({
             isTouching.value = false
             context.emit("update:value", props.dataSource[Math.abs(translateY.value / -36)])
         }
+        watchEffect(() => {
+            const index = props.dataSource.indexOf(props.value!)
+            setTranslateY(index * -36)
+        })
         return () => (
             <ol
                 class={s.picker_list}
@@ -70,27 +78,36 @@ export const Picker = defineComponent({
         value: {
             type: Array as PropType<Array<string | number>>,
             default: () => []
+        },
+        onUpdateValue: {
+            type: Function as PropType<(value: Array<string | number>) => void>,
+            required: false,
         }
     },
+    emits: ["update:value"],
     setup(props, context) {
-        const { visible, open, close } = useVisible()
-        const values = [ref(), ref(), ref()]
+        const computedValue = computed(() => {
+            const res = []
+            for (let i = 0; i < props.dataSource.length; i++) {
+                res.push(ref(props.value[i] || props.dataSource[i][0]))
+            }
+            return res
+        })
+        watch(() => computedValue.value, (newValue) => {
+            context.emit("update:value", newValue.map(v => v.value))
+            props.onUpdateValue?.(newValue.map(v => v.value))
+        }, { deep: true })
         return () => (
-            <Popup visible={true}>
-                <div
-                    class={s.picker_wrapper}
-                >
-                    {/* <div class={s.picker_divider} /> */}
-                    <div class={s.picker_divider}>
-                        {props.dataSource.map((column, index) =>
-                            <>
-                                value: {values[index].value}
-                                <Column dataSource={column} v-model:value={values[index].value} />
-                            </>
-                        )}
-                    </div>
+            <div
+                class={s.picker_wrapper}
+            >
+                {/* <div class={s.picker_divider} /> */}
+                <div class={s.picker_divider}>
+                    {props.dataSource.map((column, index) =>
+                        <Column dataSource={column} v-model:value={computedValue.value[index].value} index={index} />
+                    )}
                 </div>
-            </Popup>
+            </div>
         );
     },
 });

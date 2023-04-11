@@ -12,7 +12,11 @@ export const Popup = defineComponent({
             default: true
         },
         class: {
-            type: Object as PropType<string | string[]>
+            type: [String, () => Array as PropType<string[]>]
+        },
+        onClickMask: {
+            type: Function as PropType<(e?: MouseEvent) => void>,
+            requird: false
         }
     },
     emits: ['update:visible'],
@@ -20,11 +24,14 @@ export const Popup = defineComponent({
         const classes = computed(() => {
             if (!props.class) return []
             if (typeof props.class === 'string') return [props.class]
-            return props.class
+            return [props.class]
         })
+        const handleClickMask = (e?: MouseEvent) => {
+            props.onClickMask?.()
+        }
         return () => (
             <Teleport to="body">
-                {props.showMask && props.visible ? <Mask /> : null}
+                {props.showMask && props.visible ? <Mask onClick={handleClickMask} /> : null}
                 <Transition
                     name="popup"
                     enterFromClass={s.popup_enter_from_class}
