@@ -1,35 +1,49 @@
 .picker {
     &_wrapper {
         touch-action: none;
-        height: 33.3vh;
-        overflow: hidden;
-        position: relative;
-
-
+        display: flex;
+        flex-direction: column;
     }
 
 
 
+    &_content {
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+    }
+
     &_list {
         text-align: center;
-        flex-grow: 1;
+
+        &_wrapper {
+            overflow: hidden;
+            position: relative;
+            height: 50vh;
+            flex: 1;
+        }
+
 
         >li {
             height: 36px;
             line-height: 36px;
             text-decoration: none;
             list-style-type: none;
+            display: flex;
+            justify-content: center;
+            transform: translateY(-50%);
+            align-items: center;
         }
     }
 
     &_divider {
         display: flex;
-        border-top: 2px solid #eeeeee;
-        border-bottom: 2px solid #eeeeee;
         position: absolute;
-        top: calc(50% - 18px);
+        top: 50%;
         width: 100%;
         height: 36px;
-
+        transform: translateY(-18px);
+        background: rgba(0, 0, 0, 0.035);
+        // transform: translateY(-18px)
     }
 }

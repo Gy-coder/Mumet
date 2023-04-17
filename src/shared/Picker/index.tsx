@@ -1,6 +1,4 @@
 import { computed, defineComponent, PropType, ref, watch, watchEffect } from "vue"
-import { useVisible } from "../../hooks/useVisible";
-import { Popup } from "../Popup";
 import s from './index.module.scss'
 
 
@@ -14,9 +12,7 @@ const Column = defineComponent({
         value: {
             type: [Number, String]
         },
-        index: {
-            type: Number
-        }
+
     },
     emits: ["update:value"],
     setup(props, context) {
@@ -54,16 +50,29 @@ const Column = defineComponent({
             setTranslateY(index * -36)
         })
         return () => (
-            <ol
-                class={s.picker_list}
-                style={{ transform: `translateY(${translateY.value}px)` }}
+            <div
+                class={s.picker_list_wrapper}
                 onTouchstart={handleTouchStart}
                 onTouchmove={handleTouchMove}
-                onTouchend={handleTouchEnd}>
-                {props.dataSource.map(dataItem => {
-                    return <li key={dataItem}>{dataItem}</li>
-                })}
-            </ol>
+                onTouchend={handleTouchEnd}
+            >
+                <div class={s.picker_divider} />
+                <div style={{
+                    position: "absolute",
+                    width: "100%",
+                    top: "50%",
+                }}>
+                    <ol
+                        class={s.picker_list}
+                        style={{ transform: `translateY(${translateY.value}px)` }}
+                    >
+                        {props.dataSource.map(dataItem => {
+                            return <li key={dataItem}>{dataItem}</li>
+                        })}
+                    </ol>
+                </div>
+            </div >
+
         );
     },
 });
@@ -101,12 +110,15 @@ export const Picker = defineComponent({
             <div
                 class={s.picker_wrapper}
             >
-                {/* <div class={s.picker_divider} /> */}
-                <div class={s.picker_divider}>
+                <div style={{ border: "1px solid red" }}>
+                    Date Picker
+                </div>
+                <div class={s.picker_content}>
                     {props.dataSource.map((column, index) =>
-                        <Column dataSource={column} v-model:value={computedValue.value[index].value} index={index} />
+                        <Column dataSource={column} v-model:value={computedValue.value[index].value} />
                     )}
                 </div>
+
             </div>
         );
     },

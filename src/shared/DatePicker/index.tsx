@@ -55,7 +55,6 @@ export const DatePicker = defineComponent({
                 </ItemCreateWrapper>
 
                 <Popup visible={visible.value} onClickMask={close}>
-                    <div>Date Picker</div>
                     <Picker
                         dataSource={[
                             yearList.value,
