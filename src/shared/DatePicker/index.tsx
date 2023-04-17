@@ -23,13 +23,18 @@ export const DatePicker = defineComponent({
         },
         title: {
             type: String
+        },
+        onCancel: {
+            type: Function as PropType<() => void>
+        },
+        onConfirm: {
+            type: Function as PropType<() => void>
         }
     },
     setup(props, context) {
         const { startTime, endTime } = toRefs(props)
         const { visible, open, close } = useVisible()
-        console.log(props.startTime)
-        const valueTime = computed(() => new Dayjs(props.date))
+        const valueTime = ref(new Dayjs(props.date))
         const start = startTime.value ? new Dayjs(startTime.value) : new Dayjs().add(-10, 'year')
         const end = endTime.value ? new Dayjs(endTime.value) : new Dayjs().add(10, 'year')
         if (start.timestamp >= end.timestamp) {
@@ -47,19 +52,26 @@ export const DatePicker = defineComponent({
 
         return () => (
             <>
-                <ItemCreateWrapper value={"2022.01.11"} onClick={open}>
+                <ItemCreateWrapper value={new Dayjs(props.date).format()} onClick={open}>
                     {{
                         icons: () => <>
                             <Icon name="date" />
                             <span>Date</span>
                         </>,
-                        value: () => <>{"2020-10-01"}</>
+                        value: () => <>{new Dayjs(props.date).format()}</>
                     }}
                 </ItemCreateWrapper>
 
                 <Popup visible={visible.value} onClickMask={close}>
                     <Picker
-                        title="Choose Date"
+                        title={props.title}
+                        onCancel={close}
+                        onConfirm={
+                            () => {
+                                context.emit("update:date", valueTime.value.raw)
+                                close()
+                            }
+                        }
                         dataSource={[
                             yearList.value,
                             monthList.value,
@@ -68,7 +80,7 @@ export const DatePicker = defineComponent({
                         value={[valueTime.value.year, valueTime.value.month, valueTime.value.day]}
                         onUpdateValue={debounce((value: number[]) => {
                             console.log(value)
-                            context.emit("update:date", new Date(value[0] as number, value[1] - 1 as number, value[2] as number))
+                            valueTime.value = new Dayjs(new Date(value[0] as number, value[1] - 1 as number, value[2] as number))
                         }, 300) as (value: Array<string | number>) => void}
                     />
                 </Popup >

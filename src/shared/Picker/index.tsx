@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref, watch, watchEffect } from "vue"
+import { defineComponent, PropType, ref, watch, watchEffect } from "vue"
 import s from './index.module.scss'
 
 
@@ -94,6 +94,12 @@ export const Picker = defineComponent({
         title: {
             type: String,
             default: "Picker",
+        },
+        onCancel: {
+            type: Function as PropType<() => void>
+        },
+        onConfirm: {
+            type: Function as PropType<() => void>
         }
     },
     emits: ["update:value"],
@@ -115,11 +121,25 @@ export const Picker = defineComponent({
                 class={s.picker_wrapper}
             >
                 <div class={s.picker_header}>
-                    <span class={s.picker_header_cancel}>Cancel</span>
+                    <span class={s.picker_header_cancel} onClick={
+                        () => {
+                            props.onCancel?.()
+                        }
+                    }
+                    >
+                        Cancel
+                    </span>
                     <span class={s.picker_header_content}>
                         {props.title}
                     </span>
-                    <span class={s.picker_header_confirm}>Confirm</span>
+                    <span
+                        class={s.picker_header_confirm}
+                        onClick={() => {
+                            props.onConfirm?.()
+                        }}
+                    >
+                        Confirm
+                    </span>
                 </div>
                 <div class={s.picker_content}>
                     {props.dataSource.map((column, index) =>

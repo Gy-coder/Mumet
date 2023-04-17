@@ -13,7 +13,7 @@ export const ItemCreate = defineComponent({
         const amountRef = ref(50)
         const dateRef = ref(new Date())
         useSetupHeight()
-      
+
         return () => (
             <div class={s.item_create}>
                 <Header class={s.item_create_header}>
@@ -27,6 +27,7 @@ export const ItemCreate = defineComponent({
                     <InputNumber v-model:amount={amountRef.value} />
                     <DatePicker
                         v-model:date={dateRef.value}
+                        title="Choose date"
                     />
                     <Button style={{ background: 'white', width: "100%", marginTop: "16px" }}>Add Transaction</Button>
                 </div>
