@@ -20,6 +20,9 @@ export const DatePicker = defineComponent({
         },
         endTime: {
             type: Date,
+        },
+        title: {
+            type: String
         }
     },
     setup(props, context) {
@@ -56,6 +59,7 @@ export const DatePicker = defineComponent({
 
                 <Popup visible={visible.value} onClickMask={close}>
                     <Picker
+                        title="Choose Date"
                         dataSource={[
                             yearList.value,
                             monthList.value,
