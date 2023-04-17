@@ -1,4 +1,4 @@
-import { defineComponent } from "vue"
+import { PropType, defineComponent } from "vue"
 import s from './index.module.scss'
 
 export const Icon = defineComponent({
@@ -6,11 +6,14 @@ export const Icon = defineComponent({
         name: {
             type: String,
             required: true
+        },
+        onClick: {
+            type: Function as PropType<(e: MouseEvent) => void>
         }
     },
     setup(props, context) {
         return () => (
-            <svg class={s.icon}>
+            <svg class={s.icon} onClick={props.onClick}>
                 <use xlinkHref={`#${props.name}`}></use>
             </svg>
         );
