@@ -59,7 +59,7 @@ export default class Dayjs {
         return new Dayjs(
             new Date(
                 this.year,
-                this.month - 1,
+                this.month,
                 1,
                 0,
                 0,

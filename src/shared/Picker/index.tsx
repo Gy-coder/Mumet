@@ -29,7 +29,6 @@ const Column = defineComponent({
         }
         const handleTouchMove = (e: TouchEvent) => {
             if (!isTouching.value) return
-            console.log("index:", props.index, 'isTouching', isTouching.value)
             const y = e.touches[0].clientY
             const dy = y - lastY.value
             translateY.value += dy
@@ -86,13 +85,14 @@ export const Picker = defineComponent({
     },
     emits: ["update:value"],
     setup(props, context) {
-        const computedValue = computed(() => {
+        function generate() {
             const res = []
             for (let i = 0; i < props.dataSource.length; i++) {
                 res.push(ref(props.value[i] || props.dataSource[i][0]))
             }
             return res
-        })
+        }
+        const computedValue = ref(generate())
         watch(() => computedValue.value, (newValue) => {
             context.emit("update:value", newValue.map(v => v.value))
             props.onUpdateValue?.(newValue.map(v => v.value))

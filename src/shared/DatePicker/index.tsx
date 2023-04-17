@@ -47,7 +47,7 @@ export const DatePicker = defineComponent({
                 <ItemCreateWrapper value={"2022.01.11"} onClick={open}>
                     {{
                         icons: () => <>
-                            <Icon name="coin" />
+                            <Icon name="date" />
                             <span>Date</span>
                         </>,
                         value: () => <>{"2020-10-01"}</>
@@ -65,7 +65,7 @@ export const DatePicker = defineComponent({
                         value={[valueTime.value.year, valueTime.value.month, valueTime.value.day]}
                         onUpdateValue={debounce((value: number[]) => {
                             console.log(value)
-                            context.emit("update:date", new Date(value[0] as number, value[1] as number, value[2] as number, 0, 0, 0, 0))
+                            context.emit("update:date", new Date(value[0] as number, value[1] - 1 as number, value[2] as number))
                         }, 300) as (value: Array<string | number>) => void}
                     />
                 </Popup >
@@ -77,14 +77,3 @@ export const DatePicker = defineComponent({
 });
 
 
-/**
- * context.emit("update:date", new Date(
-                                parseInt(value[0] as string),
-                                parseInt(value[1] as string),
-                                parseInt(value[2] as string),
-                                dayjs.value.hour,
-                                dayjs.value.minute,
-                                dayjs.value.second,
-                                dayjs.value.millisecond
-                            ))
- */
