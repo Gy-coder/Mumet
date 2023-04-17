@@ -3,6 +3,7 @@
         touch-action: none;
         display: flex;
         flex-direction: column;
+
     }
 
 
@@ -45,5 +46,27 @@
         transform: translateY(-18px);
         background: rgba(0, 0, 0, 0.035);
         // transform: translateY(-18px)
+    }
+
+    &_header {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding: 0 16px;
+
+        &_content {
+            flex-grow: 1;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        &_confirm {
+            color: var(--blockbutton-bg);
+        }
+
+        &_cancel {
+            color: var(--welcome-subtitle-color);
+        }
     }
 }

@@ -90,6 +90,10 @@ export const Picker = defineComponent({
         onUpdateValue: {
             type: Function as PropType<(value: Array<string | number>) => void>,
             required: false,
+        },
+        title: {
+            type: String,
+            default: "Picker",
         }
     },
     emits: ["update:value"],
@@ -110,8 +114,12 @@ export const Picker = defineComponent({
             <div
                 class={s.picker_wrapper}
             >
-                <div style={{ border: "1px solid red" }}>
-                    Date Picker
+                <div class={s.picker_header}>
+                    <span class={s.picker_header_cancel}>Cancel</span>
+                    <span class={s.picker_header_content}>
+                        {props.title}
+                    </span>
+                    <span class={s.picker_header_confirm}>Confirm</span>
                 </div>
                 <div class={s.picker_content}>
                     {props.dataSource.map((column, index) =>
