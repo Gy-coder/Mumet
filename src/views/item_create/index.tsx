@@ -7,11 +7,13 @@ import { InputNumber } from "../../shared/InputNumber";
 import s from './index.module.scss'
 import { DatePicker } from "../../shared/DatePicker";
 import Dayjs from "../../shared/dayjs";
+import { TypeChooser } from "../../shared/TypeChooser";
 
 export const ItemCreate = defineComponent({
     setup(props, context) {
-        const amountRef = ref(50)
-        const dateRef = ref(new Date())
+        const amountRef = ref<number>(50)
+        const dateRef = ref<Date>(new Date())
+        const typeRef = ref<"+" | "-">("+");
         useSetupHeight()
 
         return () => (
@@ -29,6 +31,7 @@ export const ItemCreate = defineComponent({
                         v-model:date={dateRef.value}
                         title="Choose date"
                     />
+                    <TypeChooser v-model:type={typeRef.value} />
                     <Button style={{ background: 'white', width: "100%", marginTop: "16px" }}>Add Transaction</Button>
                 </div>
             </div>
